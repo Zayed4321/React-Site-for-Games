@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-import '../../src/index.css';
+import '.././components/GameSlider.css';
 
 // import required modules
 import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';

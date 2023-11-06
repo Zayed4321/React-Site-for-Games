@@ -10,12 +10,11 @@ import '../components/GenreSlider.css';
 // import required modules
 import { EffectCards } from 'swiper/modules';
 import { useGameContext } from "../context/allData";
+import Loader from "../components/Loader";
 
 const Genre = () => {
 
-  const { genre } = useGameContext();
-
-  console.log(genre)
+  const { genre, loading } = useGameContext();
 
   return (
     <Layout title={"Genre"}>
@@ -26,12 +25,16 @@ const Genre = () => {
           grabCursor={true}
           modules={[EffectCards]}
           className="mySwiper">
-          
-            {
-              genre.map( gre => <SwiperSlide key={gre._id} >
-                <img src={gre.greImg} alt="Sorry" />
-              </SwiperSlide> )
-            }
+
+          {
+            loading && <Loader />
+          }
+
+          {
+            genre.map(gre => <SwiperSlide key={gre._id} >
+              <img src={gre.greImg} alt="Sorry" />
+            </SwiperSlide>)
+          }
 
         </Swiper>
 

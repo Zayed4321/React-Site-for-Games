@@ -14,9 +14,16 @@ export function GetGames({ children }) {
 
     const [genre, setGenre] = useState([]);
 
+    const [loading, setloading] = useState();
+
+
     async function getAllGenre() {
 
+        setloading(true)
+
         const genre = await client.fetch('*[_type == "genre"]{ _id, "greImg": genreImg.asset->url }')
+
+        setloading(false)
 
         return setGenre(genre)
         
@@ -24,7 +31,11 @@ export function GetGames({ children }) {
 
     async function getAllGames() {
 
+        setloading(true)
+
         const games = await client.fetch('*[_type == "games"]{ _id, "imgUrl": gameImage.asset->url, gameName }')
+
+        setloading(false)
 
         return setGame(games)
         
@@ -37,7 +48,7 @@ export function GetGames({ children }) {
 
     }, [] );
 
-    return <gameContext.Provider value={{game, genre}} >
+    return <gameContext.Provider value={{game, genre, loading}} >
         {children}
     </gameContext.Provider>
 }

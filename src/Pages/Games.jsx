@@ -1,10 +1,11 @@
 import Layout from "../Layout/Layout"
 import GameCard from "../components/GameCard"
+import Loader from "../components/Loader";
 import { useGameContext } from "../context/allData"
 
 const Games = () => {
 
-  const { game } = useGameContext();
+  const { game, loading } = useGameContext();
 
   return (
     <Layout title={"Games"} >
@@ -28,7 +29,12 @@ const Games = () => {
           <div className="flex flex-wrap gap-5 justify-center mt-5" >
 
             {
-              game.map( gm => <GameCard key={gm._id} cardInfo={gm} />)
+              loading ? <Loader /> :
+                <>
+                  {
+                    game.map(gm => <GameCard key={gm._id} cardInfo={gm} />)
+                  }
+                </>
             }
 
           </div>
