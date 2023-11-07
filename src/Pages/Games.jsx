@@ -5,7 +5,7 @@ import { useGameContext } from "../context/allData"
 
 const Games = () => {
 
-  const { game, loading } = useGameContext();
+  const { game, genre, loading, getUserInput, getGenreInput } = useGameContext();
 
   return (
     <Layout title={"Games"} >
@@ -18,11 +18,14 @@ const Games = () => {
           </div>
 
           <div className="justify-center flex mt-5" >
-            <input type="Search" placeholder="Search here" className="input input-bordered me-16 w-[800px]" />
-            <select className="select select-bordered w-full max-w-xs ms-30">
-              <option disabled> Pick Your Category</option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
+            <input onChange={getUserInput} type="Search" placeholder="Search here" className="input input-bordered me-16 w-[800px]" />
+            <select onChange={getGenreInput} className="select select-bordered w-full max-w-xs ms-30">
+              <option defaultValue={"selected"}  > Pick Your Category </option>
+
+              {
+                genre.map( gre => <option  key={gre._id} > { gre.gameGenre } </option> )
+              }
+              
             </select>
           </div>
 

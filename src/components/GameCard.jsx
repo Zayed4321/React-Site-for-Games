@@ -13,7 +13,7 @@ const GameCard = ( {cardInfo} ) => {
                     <h2 className="card-title">{ gameName }</h2>
                     <p> Get into a year long roleplay game into the future that brings all the parts you may have wanted to play in reality </p>
                     <div className="card-actions justify-end">
-                        <NavLink to={"/games/:uniqueId"} >
+                        <NavLink to={`/games/${_id}`} >
                             <button className="btn btn-primary">Know More</button>
                         </NavLink>
                     </div>
