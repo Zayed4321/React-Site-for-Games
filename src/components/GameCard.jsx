@@ -1,9 +1,11 @@
-import pic1 from '../assets/CyberPunk.jpg'
 import { NavLink } from 'react-router-dom';
+import { useGameContext } from '../context/allData';
 
 const GameCard = ( {cardInfo} ) => {
 
     const { gameName, imgUrl, _id } = cardInfo
+
+    const { gameSubscription } = useGameContext();
 
     return (
         <div>
@@ -16,6 +18,9 @@ const GameCard = ( {cardInfo} ) => {
                         <NavLink to={`/games/${_id}`} >
                             <button className="btn btn-primary">Know More</button>
                         </NavLink>
+                        <button onClick={() => gameSubscription(cardInfo) } className="btn btn-accent">
+                            <p>Add to Cart</p>
+                        </button>
                     </div>
                 </div>
             </div>

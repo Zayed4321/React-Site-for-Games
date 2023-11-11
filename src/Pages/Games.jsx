@@ -5,7 +5,7 @@ import { useGameContext } from "../context/allData"
 
 const Games = () => {
 
-  const { game, genre, loading, getUserInput, getGenreInput } = useGameContext();
+  const { game, genre, loading, getUserInput, getGenreInput, gameSubscription } = useGameContext();
 
   return (
     <Layout title={"Games"} >
